@@ -23,24 +23,24 @@ public class GuestDaoImplMyBatis implements GuestDao{
 
 	@Override
 	public Guest selectByNo(int no) throws Exception {
-		Guest guest= sqlSession.selectOne("com.itwill.guest.mapper.GuestMapper.selectByNo",no);
-		sqlSession.close();
-		return guest;
+		return sqlSession.selectOne("com.itwill.guest.mapper.GuestMapper.selectByNo",no);
 	}
 
 	@Override
 	public int insertGuest(Guest guest) throws Exception {
-		return sqlSession.insert("com.itwill.guest.mapper.GuestMapper.insertGuest",guest);
+		return sqlSession.insert(
+				"com.itwill.guest.mapper.GuestMapper.insertGuest",guest);
 	}
 
 	@Override
 	public int updateGuest(Guest guest) throws Exception {
-		return sqlSession.update("com.itwill.guest.mapper.GuestMapper.updateGuest",guest);
+		return sqlSession.update(
+				"com.itwill.guest.mapper.GuestMapper.updateGuest",guest);
 	}
 
 	@Override
 	public int deleteGuest(int no) throws Exception {
-		return sqlSession.delete("com.itwill.guest.mapper.GuestMapper.updateGuest",no);
+		return sqlSession.delete("com.itwill.guest.mapper.GuestMapper.deleteGuest",no);
 	}
 
 }

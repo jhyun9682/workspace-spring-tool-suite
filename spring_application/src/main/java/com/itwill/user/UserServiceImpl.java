@@ -2,6 +2,10 @@ package com.itwill.user;
 
 import java.util.List;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Service;
+@Service(value = "userService")
+@Scope(value = "prototype")
 public class UserServiceImpl implements UserService {
 	private UserDao userDao;
 	public UserServiceImpl() {

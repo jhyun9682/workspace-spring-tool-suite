@@ -1,72 +1,61 @@
 package com.itwill.user;
 
-
+import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 public class UserDaoMyBatis {
-	
-	
+	public static final String NAMESPACE = "com.itwill.user.mapper.UserMapper.";
+	private SqlSessionFactory sqlSessionFactory;
 
-	public UserDaoMyBatis() throws Exception {
-		
-
+	public UserDaoMyBatis() {
+		try {
+			InputStream myBatisConfigInputStream = Resources.getResourceAsStream("mybatis-config.xml");
+			this.sqlSessionFactory = new SqlSessionFactoryBuilder().build(myBatisConfigInputStream);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
-	/*
-	 * 사용자관리테이블에 새로운사용자생성
-	 */
+
 	public int create(User user) throws Exception {
-		
-		int insertRowCount = 0;
-		
-		return insertRowCount;
+		return sqlSessionFactory.openSession(true).insert(NAMESPACE + "create", user);
 	}
 
-	/*
-	 * 기존의 사용자정보를 수정
-	 */
+
 	public int update(User user) throws Exception {
-		
-		int updateRowCount = 0;
-		
-		return updateRowCount;
+		return sqlSessionFactory.openSession(true).update(NAMESPACE + "update", user);
 	}
 
-	/*
-	 * 사용자아이디에해당하는 사용자를 삭제
-	 */
+	
 	public int remove(String userId) throws Exception {
-		
-		int removeRowCount = 0;
-		
-		return removeRowCount;
+		return sqlSessionFactory.openSession(true).delete(NAMESPACE + "remove", userId);
 	}
 
-	/*
-	 * 사용자아이디에해당하는 정보를 데이타베이스에서 찾아서 User 도메인클래스에 저장하여 반환
-	 */
+	
 	public User findUser(String userId) throws Exception {
-		
-		User findUser = null;
-		
-		return findUser;
+		return sqlSessionFactory.openSession(true).selectOne(NAMESPACE + "findUser", userId);
 	}
 
-	/*
-	 * 모든사용자 정보를 데이타베이스에서 찾아서 List<User> 콜렉션 에 저장하여 반환
-	 */
-	public List<User> findUserList() throws Exception {
-		List<User> findUserList =null;
-		return findUserList;
+	
+	public ArrayList<User> findUserList() throws Exception {
+		List<User> users = sqlSessionFactory.openSession(true).selectList(NAMESPACE + "findUserList");
+		ArrayList<User> userList = (ArrayList<User>) users;
+		return userList;
 	}
 
-	/*
-	 * 인자로 전달되는 아이디를 가지는 사용자가 존재하는지의 여부를판별
-	 */
+	
 	public boolean existedUser(String userId) throws Exception {
-		boolean isExist = false;
-		return isExist;
+		int count = sqlSessionFactory.openSession(true).selectOne(NAMESPACE + "existedUser", userId);
+		if (count == 1) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 }

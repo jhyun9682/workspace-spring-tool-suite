@@ -18,6 +18,7 @@ public class GuestDaoImplJdbcTemplateTestMain {
 		GuestDao guestDao=
 				(GuestDao)applicationContext.getBean("guestDao");
 		System.out.println("1.selectAll:"+guestDao.selectAll());
+		System.out.println("2.selectByNo:"+guestDao.selectByNo(164));
 		
 	}
 

@@ -1,49 +1,56 @@
 package com.itwill.guest;
 
+import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
-/*
-이름             널?       유형             
--------------- -------- -------------- 
-GUEST_NO       NOT NULL NUMBER(10)     
-GUEST_NAME     NOT NULL VARCHAR2(10)   
-GUEST_DATE     NOT NULL DATE           
-GUEST_EMAIL             VARCHAR2(50)   
-GUEST_HOMEPAGE          VARCHAR2(50)   
-GUEST_TITLE    NOT NULL VARCHAR2(100)  
-GUEST_CONTENT  NOT NULL VARCHAR2(4000) 
- */
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-public class GuestDaoMyBatis {
-
+public class GuestDaoMyBatis{
+	public static final String NAMESPACE="com.itwill.guest.mapper.GuestMapper.";
+	private SqlSessionFactory sqlSessionFactory;
 	public GuestDaoMyBatis() {
-
+		try {
+			InputStream myBatisConfigInputStream = Resources.getResourceAsStream("mybatis-config.xml");
+			this.sqlSessionFactory=new SqlSessionFactoryBuilder().build(myBatisConfigInputStream);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 	public int insertGuest(Guest guest) throws Exception {
-
-		return 0;
+		return sqlSessionFactory.openSession(true).insert(NAMESPACE+"create",guest);
 	}
-
+	
 	public Guest selectByNo(int no) throws Exception {
-		Guest guest = null;
-
-		return guest;
+		return sqlSessionFactory.openSession().selectOne(NAMESPACE+"selectByNo", no);
 	}
 
-	public List<Guest> selectAll() throws Exception {
-		List<Guest> guestList = null;
-
+	
+	public ArrayList<Guest> selectAll() throws Exception {
+		List<Guest> gList = 
+				sqlSessionFactory
+				.openSession()
+				.selectList(NAMESPACE+"selectAll");
+		ArrayList<Guest> guestList = (ArrayList<Guest>)gList;
 		return guestList;
 	}
 
+	
 	public int updateGuest(Guest guest) throws Exception {
-
-		return 0;
+		return sqlSessionFactory
+				.openSession(true)
+				.update(NAMESPACE+"updateGuest",guest);
 	}
 
+	
 	public int deleteGuest(int no) throws Exception {
-
-		return 0;
+		return sqlSessionFactory
+				.openSession(true)
+				.delete(NAMESPACE+"deleteGuest", no);
 	}
+
 }
