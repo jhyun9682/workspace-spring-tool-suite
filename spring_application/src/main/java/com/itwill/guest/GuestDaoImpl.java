@@ -27,7 +27,7 @@ public class GuestDaoImpl implements GuestDao {
 	}
 	
 	@Autowired
-	@Qualifier(value="dataSoure")
+	@Qualifier(value = "dataSource")
 	public void setDataSource(DataSource dataSource) {
 		System.out.println("3.#### GuestDaoImpl : setDataSource("+dataSource+") 호출");
 		this.dataSource = dataSource;

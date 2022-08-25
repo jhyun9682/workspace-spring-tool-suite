@@ -25,25 +25,34 @@
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd">
-		<!-- com.itwill.guest와 하위패키지의 모든클래스의 Annotation(@) 를스캔해서 초기화(객체생성,의존성주입)  -->
-		<context:component-scan base-package="com.itwill.guest"/>
-		<context:component-scan base-package="com.itwill.user"/>
-		
+		<!-- property file 사용설정 -->
+		<context:property-placeholder location="classpath:jdbc.properties"/>
 		<!-- 
 		빈을 등록하면 ApplicationContext초기화시에
 		기본생성자를 호출하여 빈객체를 생성하고 id로 등록한다.
 		 -->
-		<!-- DataSource객체 --> 
-		 <bean 	id="dataSource" 
-		 		class="org.apache.commons.dbcp2.BasicDataSource" 
-		 		scope="singleton"/>
-		<!-- Dao객체 -->
+		<!-- DataSource -->
+		<bean 	id="dataSource" 
+				class="org.apache.commons.dbcp2.BasicDataSource">
+			<!-- 생성자를 통해서 데이타를 주입받는작업이 불가능 -->
+			<property name="driverClassName" value="${jdbc.driverClassName}"/>
+			<property name="url" value="${jdbc.url}"/>
+			<property name="username" value="${jdbc.username}"/>
+			<property name="password" value="${jdbc.password}"/>
+		</bean>
 		
-		<!-- Service객체 -->
+		<!-- Dao -->
+		<!-- Constructor Injection(생성자를 통한 의존성객체주입) -->
+		<!-- 1.참조타입객체 참조값(id)을 Constructor 인자로 Injection -->
 		
-		  	  
+		<!-- Service -->
+		
+		
+		<!-- 2.기본타입데이타(값) 을 Constructor 인자로 Injection -->
+		
 		  	    
 </beans>
+
 
 
 

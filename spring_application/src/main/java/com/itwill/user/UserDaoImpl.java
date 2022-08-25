@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository(value = "userDao")
@@ -15,7 +16,7 @@ public class UserDaoImpl implements UserDao {
 	}
 	
 
-
+	@Autowired
 	public void setDataSource(DataSource dataSource) {
 		System.out.println("#### UserDaoImpl : setDataSource("+dataSource+") 호출  ");
 		this.dataSource = dataSource;
@@ -63,7 +64,6 @@ public class UserDaoImpl implements UserDao {
 	}
 	
 }
-
 
 
 

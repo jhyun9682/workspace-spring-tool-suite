@@ -2,6 +2,7 @@ package com.itwill.user;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 @Service(value = "userService")
@@ -11,7 +12,7 @@ public class UserServiceImpl implements UserService {
 	public UserServiceImpl() {
 		System.out.println("#### UserServiceImpl() : 디폴트생성자호출");
 	}
-	
+	@Autowired
 	public void setUserDao(UserDao userDao) {
 		System.out.println("#### UserServiceImpl : setUserDao("+userDao+") 호출");
 		this.userDao = userDao;
