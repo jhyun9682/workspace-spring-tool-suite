@@ -23,26 +23,24 @@ public class GuestDaoImplMyBatis implements GuestDao{
 
 	@Override
 	public Guest selectByNo(int no) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		Guest guest= sqlSession.selectOne("com.itwill.guest.mapper.GuestMapper.selectByNo",no);
+		sqlSession.close();
+		return guest;
 	}
 
 	@Override
 	public int insertGuest(Guest guest) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.insert("com.itwill.guest.mapper.GuestMapper.insertGuest",guest);
 	}
 
 	@Override
 	public int updateGuest(Guest guest) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.update("com.itwill.guest.mapper.GuestMapper.updateGuest",guest);
 	}
 
 	@Override
 	public int deleteGuest(int no) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.delete("com.itwill.guest.mapper.GuestMapper.updateGuest",no);
 	}
 
 }
