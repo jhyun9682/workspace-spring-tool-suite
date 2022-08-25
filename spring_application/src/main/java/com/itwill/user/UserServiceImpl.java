@@ -2,15 +2,23 @@ package com.itwill.user;
 
 import java.util.List;
 
+import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 @Service(value = "userService")
 @Scope(value = "prototype")
 public class UserServiceImpl implements UserService {
 	private UserDao userDao;
+	
 	public UserServiceImpl() {
 		System.out.println("#### UserServiceImpl() : 디폴트생성자호출");
+	}
+	@Autowired
+	public UserServiceImpl(@Qualifier(value = "userDao") UserDao userDao ) {
+		System.out.println("#### UserServiceImpl("+userDao+") : 생성자호출");
 	}
 	@Autowired
 	public void setUserDao(UserDao userDao) {

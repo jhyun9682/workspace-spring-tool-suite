@@ -16,15 +16,20 @@ public class SpringApplicationContextConstructorInjectionAnnotationMain {
 		ApplicationContext applicationContext=
 				new ClassPathXmlApplicationContext("2.bean_constructor_injection_annotation.xml");
 		System.out.println("----Spring Container초기화끝[ApplicationContext객체생성끝]-------");
-		/*
+		
 		System.out.println("------참조형데이타 Construtor Injection-----");
 		GuestService guestService=
 				(GuestService)applicationContext.getBean(GuestService.class);
 		System.out.println(guestService.selectAll());
+		
+		UserService userService=(UserService)applicationContext.getBean("userService");
+		System.out.println("userService:"+userService);
+		
+		
 		System.out.println("------기본형데이타 Construtor Injection-----");
 		Guest guest=(Guest)applicationContext.getBean("guest");
 		System.out.println(guest);
-		*/
+		
 	
 		
 	}
