@@ -82,21 +82,25 @@
 	<select id="findAllStudents"  resultType="com.mybatis3.domain.Student">
 		select stud_id as studid, name,email,dob from students
 	</select>
+	
 	 <select id="findStudentById"  parameterType="int" resultType="Student" >
 	 	select stud_id as studid ,name,email,dob from students where stud_id=#{studId}
 	 </select>
+	
 	<!-- 
 	/*
 	 * select sql의결과타입이 DTO[DTO List] 객체인경우
 	 * resultMap :  DTO
 	 */
 	 -->
+	
 	<select id="findStudentByIdResultMap" 
 			parameterType="int" 
 			resultMap="studentResultMap">
 		select stud_id,name,email,dob from students 
 		where stud_id=#{studId}
 	</select>
+	
 	<select id="findAllStudentsResultMap" 
 			resultMap="studentResultMap">
 		select stud_id,name,email,dob from students
