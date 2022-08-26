@@ -2,6 +2,8 @@ package com.itwill.guest.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Select;
+
 import com.itwill.guest.Guest;
 
 public interface GuestMapper {
@@ -11,6 +13,7 @@ public interface GuestMapper {
 	 * 메쏘드인자타입은 GuestMapper.xml 파일의 parameterType 와일치
 	 * 메쏘드리턴타입은 GuestMapper.xml 파일의 resultType 와일치
 	 */
+	
 	public List<Guest> selectAll();
 	/*
 	 <select id="selectAll" resultType="com.itwill.guest.Guest">

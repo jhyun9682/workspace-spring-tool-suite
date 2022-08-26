@@ -25,6 +25,7 @@
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+	<context:component-scan base-package="com.itwill.guest"/>
 	<!-- properties file사용설정 -->
 	<context:property-placeholder
 		location="classpath:jdbc.properties" />
@@ -37,28 +38,18 @@
 		<property name="username" value="${jdbc.username}" />
 		<property name="password" value="${jdbc.password}" />
 	</bean>
-	<!-- MyBatis SqlSessionFactory -->
-	<bean id="sqlSessionFactory"
-		class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="apacheDataSource" />
-		<!-- mapper xml파일 위치기술 -->
-		<property name="mapperLocations">
-			<list>
-				<value>classpath:com/itwill/user/mapper/UserMapper.xml</value>
-			</list>
-		</property>
-		<property name="typeAliasesPackage" value="com.itwill.user" />
-	</bean>
-	<!-- MyBatis SqlSession -->
-	<bean id="sqlSession"
-		class="org.mybatis.spring.SqlSessionTemplate">
-		<constructor-arg index="0" ref="sqlSessionFactory" />
+	<!-- Spring DataSource -->
+	<bean id="springDataSource" 
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName"
+			value="${jdbc.driverClassName}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
 	</bean>
 	<!-- Dao -->
-	<bean id="userDao" class="com.itwill.user.UserDaoImplMyBatis">
-		<property name="sqlSession" ref="sqlSession" />
-	</bean>
 	
+
 </beans>
 
 

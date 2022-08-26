@@ -42,21 +42,20 @@
 	<bean id="sqlSessionFactory"
 		class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="apacheDataSource" />
-		<!-- mapper xml파일 위치기술 -->
-		<property name="mapperLocations">
-			<list>
-				<value>classpath:com/itwill/guest/mapper/GuestMapper.xml</value>
-			</list>
-		</property>
-		<property name="typeAliasesPackage" value="com.itwill.guest" />
+		<property name="typeAliasesPackage" value="com.itwill.guest"/>
 	</bean>
-	<!-- MyBatis SqlSession -->
-	<bean id="sqlSession"
-		class="org.mybatis.spring.SqlSessionTemplate">
-		<constructor-arg index="0" ref="sqlSessionFactory" />
+	
+	<!-- MapperFactoryBean -->
+	<bean id="guestMapper" 
+		  class="org.mybatis.spring.mapper.MapperFactoryBean">
+		  <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+		  <property name="mapperInterface" 
+		  			value="com.itwill.guest.mapper.GuestMapper"/>	
 	</bean>
 	<!-- Dao -->
-
+	<bean id="guestDao" class="com.itwill.guest.GuestDaoImplMyBatisMapperInterface">
+			<property name="guestMapper" ref="guestMapper"/>
+	</bean>
 </beans>
 
 
