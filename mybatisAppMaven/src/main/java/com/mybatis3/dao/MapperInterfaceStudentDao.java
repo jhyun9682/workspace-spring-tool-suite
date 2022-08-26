@@ -62,9 +62,11 @@ public class MapperInterfaceStudentDao {
 	}
 	public List<Student> findAllStudentsResultMap() {
 		SqlSession sqlSession=sqlSessionFactory.openSession(true);
-		StudentMapper studentMapper=sqlSession.getMapper(StudentMapper.class);
+		StudentMapper studentMapper=
+				sqlSession.getMapper(StudentMapper.class);
+		List<Student> studentList=studentMapper.findAllStudentsResultMap();
 		sqlSession.close();
-		return null;
+		return studentList;
 	}
 	/**************************************************
 	 * SELECT[student + address JOIN]( 1 : 1 )
@@ -90,9 +92,9 @@ public class MapperInterfaceStudentDao {
 	public Student findStudentByIdWithCourses(Integer studId) {
 		SqlSession sqlSession=sqlSessionFactory.openSession(true);
 		StudentMapper studentMapper=sqlSession.getMapper(StudentMapper.class);
-		
+		Student student=studentMapper.findStudentByIdWithCourses(1);
 		sqlSession.close();
-		return null;
+		return student;
 	}
 	/**************************************************
 	 * INSERT
@@ -103,14 +105,16 @@ public class MapperInterfaceStudentDao {
 	public int insertStudent(Student student) {
 		SqlSession sqlSession=sqlSessionFactory.openSession(true);
 		StudentMapper studentMapper=sqlSession.getMapper(StudentMapper.class);
+		int rowCount=studentMapper.insertStudent(student);
 		sqlSession.close();
-		return 0;
+		return rowCount;
 	}
 	public int insertStudentBySequence1(Student student) {
 		SqlSession sqlSession=sqlSessionFactory.openSession(true);
 		StudentMapper studentMapper=sqlSession.getMapper(StudentMapper.class);
+		int rowCount=studentMapper.insertStudentBySequence1(student);
 		sqlSession.close();
-		return 0;
+		return rowCount;
 	}
 	
 	/**************************************************
@@ -122,8 +126,9 @@ public class MapperInterfaceStudentDao {
 	public int updateStudentById(Student updateStudent) {
 		SqlSession sqlSession=sqlSessionFactory.openSession(true);
 		StudentMapper studentMapper=sqlSession.getMapper(StudentMapper.class);
+		int rowCount = studentMapper.updateStudentById(updateStudent);
 		sqlSession.close();
-		return 0;
+		return rowCount;
 	}
 	/**************************************************
 	 * DELETE
@@ -133,8 +138,22 @@ public class MapperInterfaceStudentDao {
 	 */
 	public int deleteStudentById(Integer studId) {
 		SqlSession sqlSession=sqlSessionFactory.openSession(true);
-		StudentMapper studentMapper=sqlSession.getMapper(StudentMapper.class);
+		StudentMapper studentMapperProxy=sqlSession.getMapper(StudentMapper.class);
+		int rowCount = studentMapperProxy.deleteStudentById(studId);
 		sqlSession.close();
-		return 0;
+		return rowCount;
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
