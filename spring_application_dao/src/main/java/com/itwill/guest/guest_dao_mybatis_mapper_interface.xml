@@ -37,9 +37,25 @@
 		<property name="username" value="${jdbc.username}" />
 		<property name="password" value="${jdbc.password}" />
 	</bean>
-	
-	
-	
+
+	<!-- MyBatis SqlSessionFactory -->
+	<bean id="sqlSessionFactory"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="apacheDataSource" />
+		<!-- mapper xml파일 위치기술 -->
+		<property name="mapperLocations">
+			<list>
+				<value>classpath:com/itwill/guest/mapper/GuestMapper.xml</value>
+			</list>
+		</property>
+		<property name="typeAliasesPackage" value="com.itwill.guest" />
+	</bean>
+	<!-- MyBatis SqlSession -->
+	<bean id="sqlSession"
+		class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSessionFactory" />
+	</bean>
+	<!-- Dao -->
 
 </beans>
 

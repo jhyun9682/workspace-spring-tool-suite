@@ -8,13 +8,14 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.itwill.guest.Guest;
 import com.itwill.guest.GuestDao;
 
-public class GuestDaoImplMyBatisTestMain {
+public class GuestDaoImplMyBatisMapperInterfaceTestMain {
 
 	public static void main(String[] args) throws Exception{
 		System.out.println("----Spring Container초기화시작[ApplicationContext객체생성시작]");
 		ApplicationContext applicationContext=
-				new ClassPathXmlApplicationContext("com/itwill/guest/guest_dao_mybatis.xml");
+				new ClassPathXmlApplicationContext("com/itwill/guest/guest_dao_mybatis_mapper_interface.xml");
 		System.out.println("----Spring Container초기화끝[ApplicationContext객체생성끝]");
+		/*
 		GuestDao guestDao=
 				(GuestDao)applicationContext.getBean(GuestDao.class);
 		System.out.println("1.selectAll:"+guestDao.selectAll());
@@ -28,6 +29,7 @@ public class GuestDaoImplMyBatisTestMain {
 		guest.setGuest_date("2022/05/11");
 		System.out.println("4.updateGuest:"+guestDao.updateGuest(guest));
 		System.out.println("5.deleteGuest:"+guestDao.deleteGuest(240));
+		*/
 	}
 
 }

@@ -63,7 +63,6 @@ public class MapperInterfaceStudentDaoMain {
 		System.out.println("insert row count:"+mapperInterfaceStudentDao.insertStudentBySequence1(insertStudent));
 		System.out.println("insert sequence:"+insertStudent.getStudId());
 		
-		
 		/**************************************************
 		 UPDATE
 		 ***************************************************/
@@ -84,7 +83,7 @@ public class MapperInterfaceStudentDaoMain {
 		*/
 		System.out.println("---------deleteStudentById---------------------------");
 		System.out.println("delete row count:"+
-		mapperInterfaceStudentDao.deleteStudentById(25));
+		mapperInterfaceStudentDao.deleteStudentById(187));
 	}
 
 }

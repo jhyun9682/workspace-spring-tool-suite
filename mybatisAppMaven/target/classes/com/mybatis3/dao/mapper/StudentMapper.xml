@@ -78,14 +78,18 @@
 	 * resultType :  Dto
 	 */
 	 -->
-	
+	 <!-- 
+	<select id="findStudentById"  parameterType="int" resultType="Student" >
+	 	select stud_id as studid ,name,email,dob from students where stud_id=#{studId}
+	</select>
+	 -->
+	<!-- 
 	<select id="findAllStudents"  resultType="com.mybatis3.domain.Student">
 		select stud_id as studid, name,email,dob from students
-	</select>
+	</select> 
+	-->
 	
-	 <select id="findStudentById"  parameterType="int" resultType="Student" >
-	 	select stud_id as studid ,name,email,dob from students where stud_id=#{studId}
-	 </select>
+	
 	
 	<!-- 
 	/*
@@ -94,17 +98,21 @@
 	 */
 	 -->
 	
+	<!-- 
 	<select id="findStudentByIdResultMap" 
 			parameterType="int" 
 			resultMap="studentResultMap">
 		select stud_id,name,email,dob from students 
 		where stud_id=#{studId}
-	</select>
+	</select> 
+	-->
 	
+	<!-- 
 	<select id="findAllStudentsResultMap" 
 			resultMap="studentResultMap">
 		select stud_id,name,email,dob from students
 	</select>
+	 -->
 	<!-- 
 	/**************************************************
 	 	SELECT[student + address JOIN]( 1 : 1 )
@@ -114,6 +122,7 @@
 	 * resultMap : studentWithAddressResultMap
 	 */
 	 -->
+	 <!--
 	 <select id="findStudentByIdWithAddress" 
 	 		 parameterType="int"
 	 		 resultMap="studentWithAddressResultMap">
@@ -122,7 +131,8 @@
       	left outer join addresses a 
       	on s.addr_id=a.addr_id
       	where s.stud_id=#{studId}
-	 </select>
+	 </select> 
+	 -->
 	 <!-- 
 	/**************************************************
 	 SELECT[students + courses[course_enrollment]+ course] JOIN( 1 : N )
@@ -132,6 +142,7 @@
 	 * resultMap : studentWithCoursesResultMap
 	 */
 	 -->
+	 <!--
 	 <select id="findStudentByIdWithCourses" 
 	 		 parameterType="int"
 	 		 resultMap="studentWithCoursesResultMap">
@@ -142,7 +153,9 @@
 		on s.stud_id = ce.stud_id
 		left outer join courses c
 		on ce.course_id=c.course_id where s.stud_id=#{studId}
-	 </select>
+	 </select> 
+	 
+	 -->
 	 
 	<!-- 
 	/**************************************************
@@ -155,11 +168,14 @@
 	 	select STUDENTS_STUD_ID_SEQ.currval  from dual
 	</select>
 	 --> 
+	<!-- 
 	<insert id="insertStudent" parameterType="com.mybatis3.domain.Student">
 		INSERT INTO STUDENTS (STUD_ID,NAME,EMAIL,DOB)
 		VALUES (STUDENTS_STUD_ID_SEQ.nextval,#{name},#{email},#{dob})
-	</insert>
+	</insert> 
+	-->
 	
+	<!--
 	 <insert id="insertStudentBySequence1" 
 	 		 parameterType="com.mybatis3.domain.Student">
 	 	<selectKey resultType="int" order="BEFORE" keyProperty="studId">
@@ -169,19 +185,22 @@
 	 	insert into students(stud_id,name,email,dob)
 	 	values (#{studId},#{name},#{email},#{dob})
 	 </insert>
+	  -->
 	<!-- 
 	/**************************************************
 	UPDATE
 	***************************************************/
 		parameterType: DTO,VO,Domain
 	 -->
-	<update id="updateStudentById" parameterType="com.mybatis3.domain.Student">
+	<!--
+	 <update id="updateStudentById" parameterType="com.mybatis3.domain.Student">
 		update students set 
 		name=#{name},
 		email=#{email},
 		dob=#{dob}
 		where stud_id=#{studId}
-	</update>
+	</update> 
+	-->
 	
 	<!-- 
 	/**************************************************
@@ -189,9 +208,11 @@
 	***************************************************/
 		parameterType: java.lang.Integer,java.lang.String
 	-->
+	<!-- 
 	<delete id="deleteStudentById" parameterType="int">
 		delete from students where stud_id=#{studId}	
-	</delete>
+	</delete> 
+	-->
 	
 	
 	
