@@ -10,6 +10,7 @@ public interface UserMapper {
 		insert into userinfo(userid,password,name,email) values(#{userId},#{password},#{name},#{email})
 	</insert>
 	*/
+	
 	public int create(User user);
 	/*
 	<update id="update" parameterType="com.itwill.user.User">
