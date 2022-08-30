@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 @Repository(value = "guestDaoImplMyBatis")
 public class GuestDaoImplMyBatis implements GuestDao{
+	
 	@Autowired(required = false)
 	private SqlSession sqlSession;
 	

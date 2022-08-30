@@ -3,7 +3,7 @@
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.itwill.guest.mapper.GuestMapper">
-<!-- 
+	<!--  
 	<select id="selectAll" resultType="Guest">
 		select * from guest
 	</select>
@@ -39,9 +39,8 @@
 	 <delete id="deleteGuest" parameterType="int">
 	 	delete from guest where guest_no=#{guest_no}
 	 </delete>
- -->	 
-	 
-	 <!-- 	
+ 	 -->
+	<!-- 	
 	<insert id="insertGuest" 
 			parameterType="com.itwill.guest.Guest">
 		<selectKey keyProperty="guest_no" order="BEFORE" resultType="int">

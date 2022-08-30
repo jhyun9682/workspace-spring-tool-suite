@@ -16,7 +16,7 @@ public class GuestDaoImplMyBatisTestMain {
 				new ClassPathXmlApplicationContext("com/itwill/guest/guest_dao_mybatis.xml");
 		System.out.println("----Spring Container초기화끝[ApplicationContext객체생성끝]");
 		GuestDao guestDao=
-				(GuestDao)applicationContext.getBean(GuestDao.class);
+				(GuestDao)applicationContext.getBean("guestDao");
 		System.out.println("1.selectAll:"+guestDao.selectAll());
 		System.out.println("2.selectByNo:"+guestDao.selectByNo(150));
 		Guest newGuest=new Guest(0, "name", null, "email@korea.com", "www.naver.com", "제목", "내용");

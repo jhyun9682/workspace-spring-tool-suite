@@ -25,7 +25,7 @@
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd">
-	<context:component-scan base-package="com.itwill"/>
+		<context:component-scan base-package="com.itwill"/>
 		<!-- property file 사용설정 -->
 		<context:property-placeholder location="classpath:jdbc.properties"/>
 		<!-- 
@@ -48,6 +48,7 @@
 		<!-- 2.기본타입데이타(값) 을 Constructor 인자로 Injection -->
 		  	    
 </beans>
+
 
 
 

@@ -15,7 +15,7 @@ public class GuestDaoImplMyBatisMapperInterface implements GuestDao{
 	public GuestDaoImplMyBatisMapperInterface() {
 		System.out.println("#### GuestDaoImplMyBatisMapperInterface()기본생성자");
 	}
-	@Autowired
+	@Autowired(required = false)
 	public void setGuestMapper(GuestMapper guestMapper) {
 		System.out.println("#### GuestDaoImplMyBatisMapperInterface: setGuestMapper("+guestMapper+")메쏘드호출");
 		this.guestMapper = guestMapper;
