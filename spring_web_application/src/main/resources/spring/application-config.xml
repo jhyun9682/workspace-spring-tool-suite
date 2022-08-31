@@ -2,6 +2,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
 	<!-- DataSource -->
 	<!-- Dao -->
 	<bean id="helloDao" 
@@ -13,5 +14,7 @@
 	      <property name="helloDao" ref="helloDao"/>
 	</bean>
 	
-	
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+    	<property name="basenames" value="messages/messages,messages/user"/>
+    </bean>
 </beans>

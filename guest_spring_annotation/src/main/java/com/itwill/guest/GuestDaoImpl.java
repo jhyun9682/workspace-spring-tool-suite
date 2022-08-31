@@ -16,10 +16,11 @@ import org.springframework.stereotype.Repository;
  *  - Dao객체를 생성(기본생성자)하고 guestDao아이디로 객체를 등록한다.
  *  - <bean id="guestDao" class="com.itwill.guest.GuestDaoImpl"/>
  */
-@Repository
+@Repository(value = "guestDaoImpl")
 public class GuestDaoImpl implements GuestDao {
 	@Autowired
 	private DataSource dataSource;
+	
 	public GuestDaoImpl() {
 		System.out.println("2.#### GuestDaoImpl() 기본생성자호출");
 	}

@@ -37,7 +37,23 @@
 		<property name="username" value="${jdbc.username}" />
 		<property name="password" value="${jdbc.password}" />
 	</bean>
+	<!-- MyBatis SqlSessionFactory -->
+	<bean id="sqlSessionFactory"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="apacheDataSource" />
+		<property name="typeAliasesPackage" value="com.itwill.user"/>
+	</bean>
 	
+	<!-- MapperFactoryBean -->
+	<bean id="userMapper" 
+		  class="org.mybatis.spring.mapper.MapperFactoryBean">
+		  <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+		  <property name="mapperInterface" 
+		  			value="com.itwill.user.mapper.UserMapper"/>	
+	</bean>
+	<bean id="userDao" class="com.itwill.user.UserDaoImplMyBatisMapperInterface">
+		<property name="userMapper" ref="userMapper" />
+	</bean>
 </beans>
 
 
