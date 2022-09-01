@@ -28,7 +28,7 @@
 		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd">
 	<context:component-scan base-package="com.itwill.user"/>
-	<mybatis-spring:scan base-package="com.itwill.user.mapper"/>
+	<mybatis-spring:scan base-package="com.itwill.user.mapper"/> 
 	
 	<!-- properties file사용설정 -->
 	<context:property-placeholder

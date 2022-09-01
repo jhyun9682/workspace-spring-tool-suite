@@ -2,11 +2,13 @@ package com.itwill.user;
 
 import java.util.List;
 
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.itwill.user.mapper.UserMapper;
-
+@Repository(value = "userDaoImplMyBatisMapperInterface")
 public class UserDaoImplMyBatisMapperInterface implements UserDao {
+	@Autowired(required = false)
 	private UserMapper userMapper;
 
 	public UserDaoImplMyBatisMapperInterface() {

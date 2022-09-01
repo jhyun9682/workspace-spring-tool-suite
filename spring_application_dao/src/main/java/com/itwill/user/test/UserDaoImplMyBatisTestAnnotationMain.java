@@ -12,9 +12,9 @@ public class UserDaoImplMyBatisTestAnnotationMain {
 	public static void main(String[] args)throws Exception {
 		System.out.println("-----Spring Container초기화시작[ApplicationContext객체생성시작]------------------");
 		ApplicationContext applicationContext=
-				new ClassPathXmlApplicationContext("com/itwill/user/user_dao_mybatis_anotation.xml");
+				new ClassPathXmlApplicationContext("com/itwill/user/user_dao_mybatis_annotation.xml");
 		System.out.println("-----Spring Container초기화끝[ApplicationContext객체생성끝]--------------------");
-		UserDao userDao=(UserDao)applicationContext.getBean("userDao");
+		UserDao userDao=(UserDao)applicationContext.getBean("userDaoImplMyBatis");
 		System.out.println("----findUser----");
 		System.out.println(userDao.findUser("guard1"));
 		System.out.println("----findUserList----");
