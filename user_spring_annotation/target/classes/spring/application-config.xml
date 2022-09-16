@@ -33,6 +33,11 @@
 		<context:exclude-filter type="annotation"
 			expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
+	<!-- 국제화를위한 MessageSource -->
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+  		<property name="basenames" value="messages/user"/>
+  	</bean>
+	
 	<!-- jdbc.properties 파일 로딩 -->
 	<context:property-placeholder
 		location="classpath:db/jdbc.properties" />
