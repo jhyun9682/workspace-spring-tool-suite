@@ -5,11 +5,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.itwill</groupId>
-	<artifactId>spring_web_application_template</artifactId>
+	<artifactId>spring_web_application_jquery_ajax</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<name>spring_web_application_template</name>
-	<description>spring_web_application_template</description>
+	<description>spring_web_application_jquery_ajax</description>
 	<properties>
 		<java.version>1.8</java.version>
 		<org.springframework-version>4.3.30.RELEASE</org.springframework-version>
