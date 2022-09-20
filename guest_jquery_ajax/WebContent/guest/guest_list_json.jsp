@@ -20,7 +20,8 @@ System.out.println("*************************************");
 GuestService guestService=new GuestService();
 List<Guest> guestList =guestService.selectAll();
 for(int i=0;i<guestList.size();i++){
-	Guest guest=guestList.get(i);	
+	Guest guest=guestList.get(i);
+	
 	jsonData.append("{");
 	jsonData.append("\"guest_no\":"+guest.getGuest_no()+",");
 	jsonData.append("\"guest_name\":\""+guest.getGuest_name()+"\",");
@@ -40,6 +41,6 @@ for(int i=0;i<guestList.size();i++){
 	"url":"<%=url%>",
 	"msg":"<%=msg%>",
 	"data":[
-			<%=jsonData%>
+			<c:out value="<%=jsonData%>" escapeXml="false"/>
 		   ]
 }

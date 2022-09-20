@@ -49,7 +49,7 @@ h1.titleBackClass {
 	$(function(){
 		setInterval(function(){
 		    $.ajax({
-				url:'06.newsTitlesHTML.jsp',
+				url:'06.newsTitlesHTML',
 				dataType:'html',
 				success:function(responseHtml){
 				    $('#newsDiv').html(responseHtml);

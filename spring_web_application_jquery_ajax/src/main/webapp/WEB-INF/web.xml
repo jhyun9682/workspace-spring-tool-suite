@@ -53,5 +53,5 @@
 				- 정적리소스 요청처리(htm,jsp,image(gif,png,jpeg),css)를위해 필요함 
 	-->
 	</servlet-mapping>
-
+	
 </web-app>

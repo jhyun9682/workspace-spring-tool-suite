@@ -47,18 +47,15 @@ public class SringAjaxMainController {
 		Thread.sleep(1000);
 		return msg;
 	}
-	
 	@RequestMapping(value = "04.server_clock",
-			produces = "text/plain;charset=UTF-8")
+					produces ="text/plain;charset=UTF-8" )
 	public String server_clock() {
 		return new Date().toLocaleString();
 	}
-	
-	@RequestMapping(value="/06.newsTitlesHTML",
-			produces = "text/plain;charset=UTF-8")
+	@RequestMapping(value = "/06.newsTitlesHTML",
+			        produces = "text/plain;charset=UTF-8")
 	public String newsTitlesHTML() {
 		List<News> newsList= this.getNewsList();
-		
 		StringBuffer sb=new StringBuffer();
 		sb.append("<ul>");
 		for(int i=0;i<newsList.size();i++){
@@ -66,30 +63,32 @@ public class SringAjaxMainController {
 			sb.append("<li>"+news.getTitle()+"["+news.getCompany()+"-"+news.getDate()+"][HTML]</li>");
 		}
 		sb.append("</ul>");
-	
 		return sb.toString();
 	}
-	
-	@RequestMapping(value="/07.newsTitlesXML",
-			produces = "text/xml;charset=UTF-8")
-	public Map newsTitleXML() {
+	@RequestMapping(value = "/07.newsTitlesXML",
+				produces = "text/xml;charset=UTF-8")
+	public Map newsTitlesXML() {
 		List<News> newsList=this.getNewsList();
-		
+				
 		Map resultMap=new HashMap();
-		resultMap.put("code",1);
+		resultMap.put("code", 1);
 		resultMap.put("news", newsList);
 		return resultMap;
 	}
-	
-	@RequestMapping(value="08.newsTitlesJSON",
-			produces = "application/json;charset=UTF-8")
-	public Map newsTitleJSON() {
-		Map resultMap= new HashMap();
+	@RequestMapping(value = "08.newsTitlesJSON",
+					produces ="application/json;charset=UTF-8" )
+	public Map newsTitlesJSON() {
+		
+		Map resultMap=new HashMap();
 		resultMap.put("code",1);
-		resultMap.put("news", this.getNewsList());
+		resultMap.put("data", this.getNewsList());
 		
 		return resultMap;
+		
+		
 	}
+	
+	
 	
 	
 	public List<News> getNewsList(){
@@ -111,6 +110,7 @@ public class SringAjaxMainController {
 		return newsList;
 	}
 }
+
 
 
 

@@ -10,29 +10,46 @@
 </style>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="js/guest_html_content.js"></script>
-
 <script type="text/javascript">
-		
 </script>
 <script type="text/javascript">
 $(function(){
     /*
     DOM Tree가 생성된후이벤트등록
     */
-    /*############### event#################*/
-    /*********guest_home******************/
+    /*########################## event ########################*/
+    /****************guest_home*******************************/
     $('#menu_guest_home').click(function(e){
 		$('#content').html(guest_main_content());
 		e.preventDefault();
     });
-    /*********guest_write_form************/
-    $('#menu_guest_write_form').click(function(e){
+   
+    /***guest_write_form*************************/
+    $(document).on('click','#menu_guest_write_form,#btn_guest_write_form',function(e){
 			$('#content').html(guest_write_form_content());
 			e.preventDefault();
-	 });
-    
+	});
+   
+    /***guest_detail**********************************/
+    $(document).on('click','.guest_item_a',function(e){
+		var guest_no = e.target.getAttribute('guest_no');
+		var guest_no = $(e.target).attr('guest_no');
+		
+		var param='guest_no='+guest_no;
+		$.ajax({
+		    url:'guest_detail_json',
+		    method:'GET',
+		    dataType:'json',
+		   	data:param,
+		    success:function(jsonResult){
+				$('#content').html(guest_view_content(jsonResult.data[0]));
+		    }
+		});
+		
+		e.preventDefault();
+    });
     /*********guest_list******************/
-    $(document).on('click','#menu_guest_list',function(e){
+    $(document).on('click','#menu_guest_list,#btn_guest_list',function(e){
 		$.ajax({
 		    url:'guest_list_json',
 		    method:'GET',
@@ -43,12 +60,136 @@ $(function(){
 		});
 		e.preventDefault();
     });
-    /*********guest_detail****************/
-    /*********guest_write_action**********/
+   
+    /*********guest_write_action ****************************/
+    $(document).on('click','#btn_guest_write_action',function(e){
+	
+		if (document.f.guest_name.value == "") {
+			alert("이름을 입력하십시요.");
+			document.f.guest_name.focus();
+			return false;
+		}
+		if (document.f.guest_email.value == "") {
+			alert("이메일을 입력하십시요.");
+			document.f.guest_email.focus();
+			return false;
+		}
+		if (document.f.guest_homepage.value == "") {
+			alert("홈페이지를 입력하십시요.");
+			document.f.guest_homepage.focus();
+			return false;
+		}
+
+		if (document.f.guest_title.value == "") {
+			alert("제목을 입력하십시요.");
+			document.f.guest_title.focus();
+			return false;
+		}
+		if (document.f.guest_content.value == "") {
+			alert("내용을 입력하십시요.");
+			document.f.guest_content.focus();
+			return false;
+		}
+		
+		
+		$.ajax({
+		    url:'guest_write_action_json',
+		    method:'POST',
+		    data:$('#guest_write_form').serialize(),
+		    success:function(jsonResult){
+				console.log(jsonResult);
+				if(jsonResult.code==1){
+				    //쓰기성공시 guest list보여주기
+				    // - #menu_guest_list anchor의 click event trigger[발생]
+					$('#menu_guest_list').trigger('click'); 
+				}else if(jsonResult.code==2){
+				    alert(jsonResult.code.msg);
+				   
+				}
+		    }
+		});
+	});
+   
+  
     /*********guest_modify_form***********/
+    $(document).on('click','#btn_guest_modify_form',function(e){
+		
+		var param = 'guest_no='+$(e.target).attr('guest_no');
+		$.ajax({
+		    url:'guest_modify_form_json',
+		    method:'POST',
+		    data:param,
+		    dataType:'json',
+		    success:function(jsonResult){
+				$('#content').html(guest_modify_form_content(jsonResult.data[0]));
+		    }
+		});
+		
+    });
     /*********guest_modify_action*********/
+    $(document).on('click','#btn_guest_modify_action',function(e){
+		    var param=$('#guest_modify_form').serialize();
+			$.ajax({
+			    url:'guest_modify_action_json',
+			    method:'POST',
+			    data:param,
+			    dataType:'json',
+			    success:function(jsonResult){
+					if(jsonResult.code==1){
+					    var param='guest_no='+$("#guest_modify_form input[name='guest_no']").val();
+					    console.log(param);
+						$.ajax({
+						    url:'guest_detail_json',
+						    method:'GET',
+						    dataType:'json',
+						   	data:param,
+						    success:function(jsonResult){
+								$('#content').html(guest_view_content(jsonResult.data[0]));
+						    }
+						});
+					}else if(jsonResult.code==2){
+					    alert(jsonResult.msg);
+					}
+			    }
+			});
+	});
     /*********guest_remove_action*********/
-});	
+    $(document).on('click','#btn_guest_remove_action',function(e){
+		var param='guest_no='+$(e.target).attr('guest_no');
+		$.ajax({
+			url:'guest_remove_action_json',
+			method:'POST',
+			dataType:'json',
+			data:param,
+			success:function(jsonResult){
+			    if(jsonResult.code==1){
+				   /*
+				    삭제성공시 guest list보여주기
+				     - #menu_guest_list anchor의 click event trigger[발생]
+					 */
+				  $('#menu_guest_list').trigger('click'); 
+			    }else if(jsonResult.code==2){
+					alert(jsonResult.msg);
+			    }
+			}
+		});
+    });
+    /****************jQuey Ajax Global Event****************/
+    $(document).ajaxStart(function(){
+		//progress dialog show
+		$("<div id='loading'>loading...</div>").insertBefore('#content').show();
+    });
+    $(document).ajaxComplete(function(){
+		//progress dialog hide
+		$('#loading').hide();
+		$('#loading').remove();
+    });
+    /*
+    DOM Tree가 생성된후홈컨텐츠보여주기
+    */
+    $('#menu_guest_home').trigger('click'); 
+    
+});
 	
 
 	
@@ -70,7 +211,7 @@ $(function(){
 			<!-- include_common_top.jsp start-->
 
 			<h1>
-				<a href="">방명록 JQUERY</a>
+				<a href="">방명록 SPRING - JQUERY</a>
 			</h1>
 			<!-- include_common_top.jsp end-->
 		</div>

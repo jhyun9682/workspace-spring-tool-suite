@@ -7,7 +7,7 @@ function guest_item_content(guest){
 				</a>
 			</td>
 			<td width="120" align="center" bgcolor="ffffff">${guest.guest_name}</td>
-			<td width="120" align="center" bgcolor="ffffff">${guest.guest_date}</td>
+			<td width="120" align="center" bgcolor="ffffff">${guest.guest_date.substring(0,10)}</td>
 		</tr>`;
 }
 
