@@ -11,9 +11,25 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script type="text/javascript">
         	/***메뉴숨기기****/
-        	
         	$(function(){
-        		
+        		$('#header .menuButton').click(function(e){
+        		    $('#header ul').slideToggle(1000);
+        		    $(e.target).toggleClass('menuButtonPress');
+        		});
+        	    
+        		$('#header ul li a').click(function(e){
+        		    if($(e.target).attr('href').startsWith('http://')){
+        				//absolute path-->page request
+        				
+        		    }else{
+        				//relative path-->ajax request
+        				var requestUrl=$(e.target).attr('href');
+        				alert(requestUrl+"---> ajax request!!!");
+        				e.preventDefault();
+        		    }
+        		    
+        		});
+        	    
         	});
         	
         </script>
@@ -21,7 +37,9 @@
     <body>
         <div id="container">
             <div id="header" >
+            	 
             	<div class="menuButton">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+            	
                 <h1><a href="./">Jonathan Stark</a></h1>
                 <div id="utility">
                     <ul class="hide">
