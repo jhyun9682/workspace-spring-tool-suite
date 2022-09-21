@@ -824,6 +824,7 @@
     <script src="../js/vendor.min.js"></script>
     <script src="../js/scripts.min.js"></script>
     <script type="text/javascript">
+    
 	    $('#tab1 a').on('show.bs.tab',function(e){
 	    	console.log('1. e.target:'+ e.target);
 	    	console.log('2. e.relatedTarget:'+ e.relatedTarget);
@@ -833,13 +834,17 @@
 	   		console.log('e.relatedTarget href:'+relatedTargetHref);
 	    	
 	    	if(targetHref=='#home1'){
+	    	    //ajax요청
 	    		$(targetHref).find('p').html('ajax home1 receive data');
 	    	}else if(targetHref=='#profile1'){
+	    		//ajax요청
 	    		$(targetHref).find('p').html('ajax profile1 receive data');
 	    	}else if(targetHref=='#messages1'){
-	    		$(targetHref).find('p').html('ajax messages1 receive data');
+	    		//ajax요청
+	    	    $(targetHref).find('p').html('ajax messages1 receive data');
 	    	}else if(targetHref=='#settings1'){
-	    		$(targetHref).find('p').html('ajax settings1 receive data');
+	    		//ajax요청
+	    	    $(targetHref).find('p').html('ajax settings1 receive data');
 	    	}
 	    });
     	
@@ -849,7 +854,6 @@
     </script>
   </body>
 </html>
-
 
 
 

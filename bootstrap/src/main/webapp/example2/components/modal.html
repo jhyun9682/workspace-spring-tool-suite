@@ -35,7 +35,7 @@
             <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           </div>
           <div class="modal-body">
-            <p>...</p>
+            <p>******</p>
           </div>
         </div>
       </div>
@@ -738,7 +738,12 @@
             </div>
             <h6 class="text-muted text-normal text-uppercase padding-top-2x">Live Demos</h6>
             <hr class="margin-bottom-1x">
-            <button class="btn btn-outline-primary" type="button" data-toggle="modal" data-target="#modalSmall">Small Modal</button>
+            <button 
+            	class="btn btn-outline-primary" 
+            	type="button" 
+            	data-toggle="modal" 
+            	data-target="#modalSmall">Small Modal</button>
+            
             <button class="btn btn-outline-primary" type="button" data-toggle="modal" data-target="#modalDefault">Default Modal</button>
             <button class="btn btn-outline-primary" type="button" data-toggle="modal" data-target="#modalLarge">Large Modal</button>
             <button class="btn btn-outline-primary" type="button" data-toggle="modal" data-target="#modalXL">Extra Large Modal</button>
@@ -870,29 +875,26 @@
     <script src="../js/vendor.min.js"></script>
     <script src="../js/scripts.min.js"></script>
     <script type="text/javascript">
-    
-    	
-    	
-    	
-   		setTimeout(function(){
-   			$('#modalSmall').modal('show');
-   			setTimeout(function(){
-   				$('#modalSmall').modal('hide');
-   			},1000);
-   		},1000);
-    	
     	$('#modalLarge').on('show.bs.modal',function(e){
-    		alert('#modalLarge 보여지기전에 ajax 호출');
-    		
-    		$(e.target).find('.modal-title').html('짱좋은원피스[ajax receive data]');
-    		$(e.target).find('.modal-body p').html('짱좋은원피스상세정보설명[ajax receive date]');
+    	    console.log("#modalLarge 모달이 보여지기전에 ajax 호출");
+    	 	$(e.target).find('.modal-title').html("짱좋은 원피스[ajax receive data]");
+ 	    	$(e.target).find('.modal-body p').html("짱좋은 원피스 상세정보[ajax receive data]");
+    	});
+    	$('#modalLarge').on('shown.bs.modal',function(e){
+    	    console.log("#modalLarge 모달이 보여진후에 호출");
+    	   
+    	});
+    	$('#modalLarge').on('hide.bs.modal',function(e){
+    		console.log("#modalLarge 모달이 사라지기직전에 호출");
+    	});
+    	$('#modalLarge').on('hidden.bs.modal',function(e){
+    	 	console.log("#modalLarge 모달이 사라진후에 호출");
     	});
    		
    		
     </script>
   </body>
 </html>
-
 
 
 
