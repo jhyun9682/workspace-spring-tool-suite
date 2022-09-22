@@ -14,11 +14,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class UserServiceImpl implements UserService{
-	
-
-	
 	@Autowired
-	@Qualifier("userDaoImplMyBatisMapperInterface")
 	private UserDao userDao;
 
 	public UserServiceImpl() throws Exception {
@@ -72,7 +68,6 @@ public class UserServiceImpl implements UserService{
 			
 			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 			if(encoder.matches(password,user.getPassword())){
-			//if(user.isMatchPassword(password)){
 				System.out.println("out:"+password);
 				System.out.println("int:"+user.getPassword());
 				//패쓰워드일치(로그인성공)
@@ -94,13 +89,17 @@ public class UserServiceImpl implements UserService{
 	 */
 	@Override
 	public User findUser(String userId) throws Exception{
-		return userDao.findUser(userId);
+		User user=userDao.findUser(userId);
+		return user;
 	}
 	/*
 	 * 회원수정
 	 */
 	@Override
 	public int update(User user)throws Exception{
+		BCryptPasswordEncoder encoder=new BCryptPasswordEncoder();
+		String securePassword = encoder.encode(user.getPassword());
+		user.setPassword(securePassword);
 		return userDao.update(user);
 	}
 	
