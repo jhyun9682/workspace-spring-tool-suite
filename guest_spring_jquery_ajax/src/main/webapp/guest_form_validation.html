@@ -28,7 +28,9 @@ label.error{
 <script type="text/javascript">
 </script>
 <script type="text/javascript">
+
 $(function(){
+   
     /*
     DOM Tree가 생성된후이벤트등록
     */
@@ -39,7 +41,7 @@ $(function(){
 		1. $(form).validate() function은 form loading시에 미리 호출되어있어야한다.
 		2. var validator=$(form).validate(); 실행후 반환되는 validator 객체를 사용한다.
 	#################################################################################/
-	
+	 
 	/* validator객체변수선언 */
 	var validator=null;
 	/*validator객체 디폴트속성 설정*/
@@ -54,7 +56,8 @@ $(function(){
 					required: true
 				},
 				guest_content:{
-					required: true
+					required: true,
+					equalTo : "guest_title"
 				},
 				guest_homepage:{
 					required: true,
@@ -76,7 +79,7 @@ $(function(){
 					required: "제목을 입력하세요"
 				},
 				guest_content:{
-					required: "내용을 입력해주세요"
+					required: "내용을 입력해주세요",
 				},
 				guest_homepage:{
 					required: "홈페이지를 입력해주세요",

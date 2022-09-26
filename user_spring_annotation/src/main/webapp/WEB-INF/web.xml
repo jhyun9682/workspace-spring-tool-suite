@@ -20,11 +20,11 @@
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath:spring/application-config.xml</param-value>
+		
 	</context-param>
 
 	<listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener
-		</listener-class>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
 	<!-- - Servlet that dispatches request to registered handlers (Controller 
@@ -44,7 +44,7 @@
 		<servlet-name>dispatcherServlet</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
-	<session-config>
+	 <session-config>
 		<tracking-mode>COOKIE</tracking-mode>
 	</session-config>
 

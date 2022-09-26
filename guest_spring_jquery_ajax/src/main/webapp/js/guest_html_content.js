@@ -1,4 +1,5 @@
 function guest_item_content(guest){
+	
 	return `<tr class="guest_item">
 			<td width="50" align="center" bgcolor="ffffff" height="20">${guest.guest_no}</td>
 			<td width="300" bgcolor="ffffff" style="padding-left: 10">
@@ -9,6 +10,7 @@ function guest_item_content(guest){
 			<td width="120" align="center" bgcolor="ffffff">${guest.guest_name}</td>
 			<td width="120" align="center" bgcolor="ffffff">${guest.guest_date.substring(0,10)}</td>
 		</tr>`;
+		
 }
 
 function guest_list_content(guestArray) {

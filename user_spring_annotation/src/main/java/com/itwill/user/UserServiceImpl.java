@@ -1,10 +1,10 @@
 package com.itwill.user;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 /*
@@ -14,6 +14,9 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class UserServiceImpl implements UserService{
+	
+
+	
 	@Autowired
 	@Qualifier("userDaoImplMyBatisMapperInterface")
 	private UserDao userDao;
@@ -40,6 +43,9 @@ public class UserServiceImpl implements UserService{
 		}else {
 			//아이디안중복
 			//2.회원가입
+			BCryptPasswordEncoder encoder=new BCryptPasswordEncoder();
+			String securePassword = encoder.encode(user.getPassword());
+			user.setPassword(securePassword); //암호화
 			int insertRowCount=userDao.create(user);
 			return insertRowCount;
 		}
@@ -63,7 +69,12 @@ public class UserServiceImpl implements UserService{
 			result=0;
 		}else {
 			//아이디존재함
-			if(user.isMatchPassword(password)) {
+			
+			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+			if(encoder.matches(password,user.getPassword())){
+			//if(user.isMatchPassword(password)){
+				System.out.println("out:"+password);
+				System.out.println("int:"+user.getPassword());
 				//패쓰워드일치(로그인성공)
 				result=2;
 			}else {

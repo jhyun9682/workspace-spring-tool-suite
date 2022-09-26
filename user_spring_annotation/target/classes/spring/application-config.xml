@@ -64,9 +64,10 @@
 			value="com.itwill.user.mapper.UserMapper" />
 	</bean>
 	 -->
-	<!-- annotation scan -->
-
-
+	<!-- annotation scan 
+	<bean id="passwordEncoder"
+		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+	-->
 
 
 </beans>
