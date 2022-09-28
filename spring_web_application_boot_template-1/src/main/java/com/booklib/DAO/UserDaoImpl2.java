@@ -10,15 +10,15 @@ import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.booklib.UserSQL;
-import com.booklib.DTO.User;
+import com.booklib.UserSQL2;
+import com.booklib.DTO.User2;
 
 
-public class UserDaoImpl implements UserDao{
+public class UserDaoImpl2 implements UserDao2{
 	@Autowired
 	private DataSource dataSource;
 	
-	public UserDaoImpl() throws Exception{
+	public UserDaoImpl2() throws Exception{
 		
 	}
 	public DataSource getdataSource(){
@@ -31,9 +31,9 @@ public class UserDaoImpl implements UserDao{
 	
 	//회원가입
 	@Override
-	public int insertUser(User user) throws Exception{
+	public int insertUser(User2 user) throws Exception{
 		Connection con=dataSource.getConnection();
-		PreparedStatement pstmt=con.prepareStatement(UserSQL.USER_INSERT);
+		PreparedStatement pstmt=con.prepareStatement(UserSQL2.USER_INSERT);
 		pstmt.setString(1,user.getUser_id());
 		pstmt.setString(2,user.getUser_name());
 		pstmt.setString(3,user.getUser_password());
@@ -112,9 +112,9 @@ public class UserDaoImpl implements UserDao{
 		
 		//정보수정
 	@Override
-	public int updateUser(User user) throws Exception {
+	public int updateUser(User2 user) throws Exception {
 		Connection con=dataSource.getConnection();
-		PreparedStatement pstmt=con.prepareStatement(UserSQL.USER_UPDATE);
+		PreparedStatement pstmt=con.prepareStatement(UserSQL2.USER_UPDATE);
 		pstmt.setString(1,user.getUser_id());
 		pstmt.setString(2,user.getUser_name());
 		pstmt.setString(3,user.getUser_password());
@@ -130,8 +130,19 @@ public class UserDaoImpl implements UserDao{
 	}
 	
 	@Override
-	public int deleteUser(User user) throws Exception {
+	public int deleteUser(User2 user) throws Exception {
 		
+		return 0;
+	}
+	@Override
+	public User2 selectByUserId(String user_id) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public List<User2> selectAll() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

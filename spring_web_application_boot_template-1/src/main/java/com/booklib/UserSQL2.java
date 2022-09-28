@@ -1,6 +1,6 @@
 package com.booklib;
 
-public class UserSQL {
+public class UserSQL2 {
 	public static final String USER_INSERT = "insert into user_info values (?,?,?,?,?,?,?,?,?)";
 	public static final String USER_UPDATE = "update user_info set user_password=?, user_phone=?, user_email=?, user_address=? where user_id=?";
 	public static final String USER_DELETE_BY_ID = "delete from user_info where user_id=?";

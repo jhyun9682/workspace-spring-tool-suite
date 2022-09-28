@@ -1,6 +1,6 @@
 package com.booklib.DTO;
 
-public class User {
+public class User2 {
 	private String user_id; //아이디
 	private String user_name; //이름
 	private String user_password; //비밀번호
@@ -16,12 +16,12 @@ public class User {
 	private int category_no; //카테고리 번호
 	
 	
-	public User() {
+	public User2() {
 	}
 	
 	
 
-	public User(String user_id, String user_name, String user_password, String user_email, String user_birth,
+	public User2(String user_id, String user_name, String user_password, String user_email, String user_birth,
 			String user_gender, String user_phone, String user_address, String user_qr, String user_rental_status,
 			int user_book_cnt_limit, int user_book_weight, int category_no) {
 		super();
