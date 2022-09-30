@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class GuestServiceImpl implements GuestService {
 	@Autowired
-	//@Qualifier("guestDaoImplMyBatis")
 	private GuestDao guestDao;
 	
 	public GuestServiceImpl() throws Exception {

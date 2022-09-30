@@ -16,7 +16,7 @@ public class GuestDaoImplMyBatisMapperInterface  implements GuestDao{
 		this.guestMapper=guestMapper;
 	}
 	public GuestDaoImplMyBatisMapperInterface() {
-		// TODO Auto-generated constructor stub
+		System.out.println("GuestDaoImplMyBatisMapperInterface");
 	}
 	public GuestMapper getGuestMapper() {
 		return guestMapper;
