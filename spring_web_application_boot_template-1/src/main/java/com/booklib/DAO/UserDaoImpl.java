@@ -10,11 +10,11 @@ import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.booklib.UserSQL;
-import com.booklib.DTO.User;
+import com.booklib.UserSQL2;
+import com.booklib.DTO.User2;
 
 
-public class UserDaoImpl implements UserDao{
+public class UserDaoImpl implements UserDao2{
 	@Autowired
 	private DataSource dataSource;
 	
@@ -31,9 +31,9 @@ public class UserDaoImpl implements UserDao{
 	
 	//회원가입
 	@Override
-	public int insertUser(User user) throws Exception{
+	public int insertUser(User2 user) throws Exception{
 		Connection con=dataSource.getConnection();
-		PreparedStatement pstmt=con.prepareStatement(UserSQL.USER_INSERT);
+		PreparedStatement pstmt=con.prepareStatement(UserSQL2.USER_INSERT);
 		pstmt.setString(1,user.getUser_id());
 		pstmt.setString(2,user.getUser_name());
 		pstmt.setString(3,user.getUser_password());
@@ -111,35 +111,25 @@ public class UserDaoImpl implements UserDao{
 		*/
 		
 		//정보수정
-	@Override
-	public int updateUser(User user) throws Exception {
-		Connection con=dataSource.getConnection();
-		PreparedStatement pstmt=con.prepareStatement(UserSQL.USER_UPDATE);
-		pstmt.setString(1,user.getUser_id());
-		pstmt.setString(2,user.getUser_name());
-		pstmt.setString(3,user.getUser_password());
-		pstmt.setString(4,user.getUser_email());
-		pstmt.setString(5,user.getUser_birth());
-		pstmt.setString(6,user.getUser_gender());
-		pstmt.setString(7,user.getUser_phone());
-		pstmt.setString(8,user.getUser_address());
-		pstmt.setInt(9,user.getCategory_no());
-		int updateRowCount=pstmt.executeUpdate();
-		con.close();
-		return updateRowCount;
-	}
+	
 	
 	@Override
-	public int deleteUser(User user) throws Exception {
-		
+	public int updateUser(User2 user) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	@Override
-	public User selectByUserId(String user_id) throws Exception {
+	public int deleteUser(User2 user) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	@Override
+	public User2 selectByUserId(String user_id) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	@Override
-	public List<User> selectAll() throws Exception {
+	public List<User2> selectAll() throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
