@@ -71,7 +71,7 @@ public class GuestController {
 
 		List<Guest> guestList = guestService.selectAll();
 		model.addAttribute("guestList", guestList);
-		forwardPath = "forward:/WEB-INF/views/guest_list.jsp";
+		forwardPath = "forward:/WEB-INF/views/guest_list_test.jsp";
 
 		return forwardPath;
 	}

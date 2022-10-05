@@ -10,11 +10,42 @@ import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.booklib.UserSQL;
-import com.booklib.DTO.User;
+import com.booklib.UserSQL2;
+import com.booklib.DTO.User2;
 
 
-public class UserDaoImpl implements UserDao{
+public class UserDaoImpl implements UserDao2{
+
+	@Override
+	public int insertUser(User2 user) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public User2 selectByUserId(String user_id) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<User2> selectAll() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int updateUser(User2 user) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int deleteUser(User2 user) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	/*
 	@Autowired
 	private DataSource dataSource;
 	
@@ -79,8 +110,8 @@ public class UserDaoImpl implements UserDao{
 		return user ;
 		
 	}
-	*/
-	/*
+	
+	
 	@Override
 	public ArrayList<User> selectAll() throws Exception {
 		ArrayList<User> userList=new ArrayList<User>();
@@ -108,7 +139,7 @@ public class UserDaoImpl implements UserDao{
 		con.close();
 		return userList;
 	}
-		*/
+		
 		
 		//정보수정
 	@Override
@@ -143,5 +174,5 @@ public class UserDaoImpl implements UserDao{
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+*/	
 }

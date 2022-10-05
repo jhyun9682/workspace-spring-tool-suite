@@ -152,7 +152,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="spring_web_application_template" path="/spring_web_application_template" reloadable="true" source="org.eclipse.jst.jee.server:spring_web_application_template"/></Host>
+      <Context docBase="spring_web_application_template" path="/spring_web_application_template" reloadable="true" source="org.eclipse.jst.jee.server:spring_web_application_template"/><Context docBase="guest_spring_boot" path="/guest_spring_boot" reloadable="true" source="org.eclipse.jst.jee.server:guest_spring_boot"/><Context docBase="spring_web_application_boot_template" path="/spring_web_application_boot_template" reloadable="true" source="org.eclipse.jst.jee.server:spring_web_application_boot_template"/><Context docBase="board_model1" path="/board_model1" reloadable="true" source="org.eclipse.jst.jee.server:board_model1"/><Context docBase="spring_web_application_boot" path="/spring_web_application_boot" reloadable="true" source="org.eclipse.jst.jee.server:spring_web_application_boot"/><Context docBase="web-project-team2-kyobo" path="/web-project-team2-kyobo" reloadable="true" source="org.eclipse.jst.jee.server:web-project-team2-kyobo"/></Host>
     </Engine>
   </Service>
 </Server>
